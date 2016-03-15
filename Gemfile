@@ -35,6 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-linkedin-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
