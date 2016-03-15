@@ -36,6 +36,7 @@ gem 'pg'
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-linkedin-oauth2'
 
 group :development, :test do
