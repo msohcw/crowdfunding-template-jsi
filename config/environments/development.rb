@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -31,12 +31,27 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  # Adds additional error checking when serving assets at runtime.
+  # Adds additional error che cking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.default_url_options = { :host => "http://localhost:3000" }
+
+  config.action_mailer.delivery_method = :smtp
+  # ActionMailer::Base.smtp_settings = {
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address        => "smtp.mailgun.org",
+    :port           => 587,
+    :domain         => "mg.matthewsoh.com",
+    :user_name      => "postmaster@mg.matthewsoh.com",
+    :password       => Rails.application.secrets.mailgun_password
+  }
+
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
