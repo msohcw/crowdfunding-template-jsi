@@ -49,7 +49,9 @@ Rails.application.configure do
     :port           => 587,
     :domain         => "mg.matthewsoh.com",
     :user_name      => "postmaster@mg.matthewsoh.com",
-    :password       => Rails.application.secrets.mailgun_password
+    :password       => Rails.application.secrets.mailgun_password,
+    :enable_starttls_auto => true,
+    :ssl            => true
   }
 
 

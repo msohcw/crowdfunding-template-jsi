@@ -14,4 +14,12 @@ class User < ActiveRecord::Base
   		user.password = Devise.friendly_token[0,20]
   	end
   end
+
+  protected
+
+  #devise async mail override
+  def send_devise_notification(notification, *args)
+  	logger.debug "override runs"
+  	devise_mailer.send(notification, self, *args).deliver_later!
+  end
 end

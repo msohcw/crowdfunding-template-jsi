@@ -35,9 +35,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 gem 'devise'
+# gem 'devise-async'
+
 gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-linkedin-oauth2'
+
 gem 'resque'
 gem 'resque-scheduler'
 
