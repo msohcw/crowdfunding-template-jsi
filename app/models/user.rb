@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :confirmable, :lockable, :timeoutable, 
          :omniauthable, :omniauth_providers => [:linkedin] 
 
+  has_many :projects
+
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   		user.provider = auth.provider
@@ -19,7 +21,6 @@ class User < ActiveRecord::Base
 
   #devise async mail override
   def send_devise_notification(notification, *args)
-  	logger.debug "override runs"
   	devise_mailer.send(notification, self, *args).deliver_later!
   end
 end
