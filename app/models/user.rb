@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:linkedin] 
 
   has_many :projects
+  has_many :transactions
+  has_many :backed_projects, through: :transactions, source: :project
 
   def self.from_omniauth(auth)
   	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

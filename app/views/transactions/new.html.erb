@@ -1,0 +1,7 @@
+<h1>Back <%= Project.find(@project).name %></h1>
+<%= form_for(@transaction) do |f| %>
+	<%= f.label :amount %>
+	<%= f.number_field :amount %>
+	<%= f.hidden_field :project_id, value: @project %>
+	<%= f.submit "Back!" %>
+<% end %>

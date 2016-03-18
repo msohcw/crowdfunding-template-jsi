@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160318052502) do
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
-    t.string   "amount"
+    t.integer  "amount"
     t.integer  "user_id"
     t.integer  "project_id"
     t.datetime "created_at", null: false
