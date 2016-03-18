@@ -2,8 +2,8 @@
 <h1>Projects</h1>
 <%= link_to('Create Project', new_project_path) %>
 <hr />
-<ul>
+<div>
 	<%= render @projects %>
-</ul>
+</div>
 <hr />
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
