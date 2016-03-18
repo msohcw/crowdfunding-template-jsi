@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user
-  has_many :transactions
-  has_many :backers, through: :transactions, source: :user
+  has_many :investments
+  has_many :backers, through: :investments, source: :user
   after_initialize :init
 
   def init
@@ -9,9 +9,7 @@ class Project < ActiveRecord::Base
   end
 
   def calculate_raised
-    logger.info("---debug---")
-    logger.debug(self.transactions.sum(:amount))
-  	self.update_attribute(:raised, self.transactions.sum(:amount))
+    self.update_attribute(:raised, self.investments.sum(:amount))
   	return self.raised
   end
 end

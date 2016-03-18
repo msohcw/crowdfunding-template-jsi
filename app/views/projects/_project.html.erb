@@ -4,6 +4,6 @@
   <p>Creator: <%= project.user.name %></p>
   <p>Expires on: <%=project.expires %> | Target: $<%= project.target %></p>
   <p><%= project.backers.count %> Backers | <%= project.raised %> raised (<%= "%.2f" % (project.raised.to_f/project.target.to_f * 100) %>%)</p>
-  <p><%= link_to "Back Project", new_transaction_path(project_id: project.id) %></p>
+  <p><%= link_to "Back Project", new_investment_path(project_id: project.id) %></p>
 </li>
 <hr />

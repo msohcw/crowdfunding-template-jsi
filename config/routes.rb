@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'projects#index'
 
   resources :projects,        only: [:new, :create]
-  resources :transactions,    only: [:new, :create]
+  resources :investments,    only: [:new, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
