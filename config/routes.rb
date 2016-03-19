@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :projects,          only: [:new, :create]
   resources :investments,       only: [:new, :create, :edit, :update]
-  get 'investments/:id/pledge'  => 'investments#pledge'
+  post 'stripe/add_payment_method'  => 'stripe#add_payment_method'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view' 

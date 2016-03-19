@@ -1,7 +1,0 @@
-<div>
-	<% unless current_user.stripe_customer_reference %>
-		render 'add_payment_form'
-	<% else %>
-		<!-- existing payments -->
-	<% end %>
-</div>

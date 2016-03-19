@@ -1,0 +1,22 @@
+<%= form_tag "/stripe/add_payment_method", :id => "add-cc-form", :remote => true  do %>
+
+	<span id = "add-payment-method-errors"></span>
+	<label>
+		<span>Card Number</span>
+		<input id = "cc-number" type = "tel" size = "20" data-stripe = "number"></input>
+	</label>
+	<br />
+	<label>
+		<span>CVC</span>
+		<input id = "cc-cvc" type = "tel" size = "4" data-stripe = "cvc"></input>
+	</label>
+	<br />
+	<label>
+		<span>Expiration (MM/YYYY)</span>
+		<input id = "cc-expiry" type = "tel" size = "10" data-stripe = "exp-month"></input>
+	</label>
+	<br />
+	<%= hidden_field_tag :stripe_token %>
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	<button type = "submit">Add Card</button>
+<% end %>

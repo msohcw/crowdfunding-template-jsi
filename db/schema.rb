@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318162010) do
+ActiveRecord::Schema.define(version: 20160319104820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,10 @@ ActiveRecord::Schema.define(version: 20160318162010) do
     t.integer  "project_id"
     t.integer  "amount"
     t.boolean  "charged"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.boolean  "confirmed"
+    t.string   "stripe_card_ref"
   end
 
   add_index "investments", ["project_id"], name: "index_investments_on_project_id", using: :btree
