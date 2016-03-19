@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'projects#index'
 
-  resources :projects,          only: [:new, :create]
-  resources :investments,       only: [:new, :create, :edit, :update]
-  post 'stripe/add_payment_method'  => 'stripe#add_payment_method'
+  resources :projects,      only: [:new, :create]
+  resources :investments,   only: [:new, :create, :edit, :update]
+  post  'investments/:id/confirm'   => 'investments#confirm' 
+
+  post  'stripe/add_payment_method' => 'stripe#add_payment_method'
+  get   'pledge/:id'                => 'stripe#pledge'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view' 

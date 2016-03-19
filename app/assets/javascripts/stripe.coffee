@@ -27,6 +27,7 @@ $(document).ready(function(){
 
 	$form.on("ajax:success", function(event, data, status, xhr){
 		console.log(data);
+		location.reload(true);
 	}).on("ajax:error", function (event, xhr, status, error) {
 		console.log(error);
 	})

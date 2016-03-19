@@ -37,16 +37,16 @@ class InvestmentsController < ApplicationController
 		@investment = current_user.investments.find(params[:id])
 		@project = Project.find(@investment.project_id)
 		if @investment.present? and @investment.update_attribute(:amount, investment_params[:amount])
-			# flash[:success] = "Project backing changed to #{@investment.amount}"
-			# @investment.project.calculate_raised
-			render 'pledge'
+			# render 'pledge'
+			redirect_to "/pledge/#{params[:id]}"
 		else
 			flash[:failure] = "Error in backing project."
 			render 'edit'
 		end
 	end
 
-	def pledge
+	def confirm
+		
 	end
 	
   protected
