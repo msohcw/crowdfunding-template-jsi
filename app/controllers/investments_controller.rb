@@ -27,10 +27,11 @@ class InvestmentsController < ApplicationController
 
 	def edit
 		@investment = current_user.investments.find(params[:id])
+		@project = @investment.project_id
+
 		unless @investment.present? 
 			redirect_to new_investment_path(project: params[:project_id])
 		end
-		@project = @investment.project_id
 	end
 
 	def update
@@ -46,7 +47,12 @@ class InvestmentsController < ApplicationController
 	end
 
 	def confirm
-		
+		@investment = current_user.investments.find(params[:id])
+		@project = Project.find(@investment.project_id)
+		@project.calculate_raised
+
+		@investment.update_attribute(:stripe_card_ref, params[:cc_fingerprint])
+		@investment.update_attribute(:confirmed, true)
 	end
 	
   protected

@@ -2,8 +2,12 @@
 	<% if current_user.stripe_customer_ref.present? %>
 		<h3>Choose a payment method:</h3>
 		<%= form_tag "/investments/#{params[:id]}/confirm", :id => "choose-cc-form" do %>
-			<% @filtered_cards.each do |card| %>
-				<%= radio_button_tag(:cc_fingerprint, card[:fingerprint]) %>
+			<% @filtered_cards.each_with_index do |card, index| %>
+				<% if index == 0 %>
+					<%= radio_button_tag(:cc_fingerprint, card[:fingerprint], checked = true) %>
+				<% else %>
+					<%= radio_button_tag(:cc_fingerprint, card[:fingerprint]) %>
+				<% end %>
 				<%= label_tag('cc_fingerprint_' + card[:fingerprint], "#{card[:brand]} card ending in #{card[:last4]}") %>
 				<br />
 			<% end %>
