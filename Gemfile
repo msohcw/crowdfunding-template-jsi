@@ -44,6 +44,8 @@ gem 'omniauth-linkedin-oauth2'
 gem 'resque'
 gem 'resque-scheduler'
 
+gem 'stripe'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

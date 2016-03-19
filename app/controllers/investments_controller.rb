@@ -44,6 +44,11 @@ class InvestmentsController < ApplicationController
 			render 'edit'
 		end
 	end
+
+	def pledge
+		@investment = current_user.investments.find(params[:id])
+		@project = Project.find(@investment.project_id)
+	end
 	
   protected
 

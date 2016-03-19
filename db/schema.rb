@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318075357) do
+ActiveRecord::Schema.define(version: 20160318162010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160318075357) do
     t.boolean  "charged"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "confirmed"
   end
 
   add_index "investments", ["project_id"], name: "index_investments_on_project_id", using: :btree
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160318075357) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "stripe_customer_ref"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
