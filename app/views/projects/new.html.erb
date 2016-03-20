@@ -1,12 +1,12 @@
-<h1>Create a new Project</h1>
+<h2>Create a new Project</h2>
+<hr />
 <%= form_for(@project) do |f| %>
 	<%= f.label :name %>
 	<%= f.text_field :name %>
-	<br />
-	<%= f.text_area :description, placeholder: "Describe your project..." %>
-	<br />
+	<%= f.label :description %>
+	<%= f.text_area :description, placeholder: "Describe your project...", rows:5, cols:50 %>
 	<%= f.label :target %>
 	<%= f.text_field :target %>
 	<br />
-	<%= f.submit "Create" %>
+	<%= f.submit "Create", class: "button button-primary" %>
 <% end %>

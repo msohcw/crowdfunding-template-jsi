@@ -1,20 +1,31 @@
 <div>
 	<% if current_user.stripe_customer_ref.present? %>
-		<h3>Choose a payment method:</h3>
+		<div class = "six columns">
+		<p>Choose a payment method:</p>
 		<%= form_tag "/investments/#{params[:id]}/confirm", :id => "choose-cc-form" do %>
 			<% @filtered_cards.each_with_index do |card, index| %>
-				<% if index == 0 %>
-					<%= radio_button_tag(:cc_fingerprint, card[:fingerprint], checked = true) %>
-				<% else %>
-					<%= radio_button_tag(:cc_fingerprint, card[:fingerprint]) %>
-				<% end %>
-				<%= label_tag('cc_fingerprint_' + card[:fingerprint], "#{card[:brand]} card ending in #{card[:last4]}") %>
-				<br />
+				<label for = 'cc_fingerprint_<%= card[:fingerprint] %>'>
+					<% if index == 0 %>
+						<%= radio_button_tag(:cc_fingerprint, card[:fingerprint], checked = true) %>
+					<% else %>
+						<%= radio_button_tag(:cc_fingerprint, card[:fingerprint]) %>
+					<% end %>
+					<label-body>
+						<%=card[:brand]%> card ending in <%=card[:last4]%>
+					</label-body>	 
+				</label>
 			<% end %>
 			<br />
-			<%= submit_tag('Pledge') %>
+			<%= submit_tag 'Pledge', class: "button button-primary" %>
 		<% end %>
-		<h3>Or add a new payment method:</h3>
+		</div>
+		<div class = "six columns">
+			<p>Or add a new payment method:</p>
+			<%= render 'stripe/add_payment_form' %>
+		</div>
+	<% else %>
+		<p>We don't have a payment method on record for your account.</p>
+		<p>Please add a new payment method.</p>
+		<%= render 'stripe/add_payment_form' %>
 	<% end %>
-	<%= render 'stripe/add_payment_form' %>
 </div>

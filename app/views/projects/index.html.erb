@@ -1,9 +1,12 @@
-<p>Hello <%= current_user.name %></p>
-<h1>Projects</h1>
-<%= link_to('Create Project', new_project_path) %>
+<h6>Hello <%= current_user.name %>, welcome back!</h6>
+<hr />
+<h2>Projects</h2>
+<%= link_to 'Create Project', new_project_path, class: "button button-primary" %>
 <hr />
 <div>
 	<%= render @projects %>
 </div>
-<hr />
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<p>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> | 
+<%= link_to('Account Settings', edit_user_registration_path) %> 
+</p>
