@@ -12,4 +12,8 @@ class Project < ActiveRecord::Base
     self.update_attribute(:raised, self.investments.sum(:amount))
   	return self.raised
   end
+
+  def expired?
+    return Time.now > self.expires
+  end
 end

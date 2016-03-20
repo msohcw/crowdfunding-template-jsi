@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   end
   
   def create
-  	@project = current_user.projects.build(project_params.merge(:expires => 30.days.from_now))
+  	@project = current_user.projects.build(project_params.merge(:expires => 1.minute.from_now))
   	if @project.save
   		flash[:success] = "Project created."
   	else
