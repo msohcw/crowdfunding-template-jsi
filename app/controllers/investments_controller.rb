@@ -16,13 +16,11 @@ class InvestmentsController < ApplicationController
 		@investment = current_user.investments.build(investment_params)
 
 		if @investment.save
-			flash[:success] = "Project backed for #{@investment.amount}"
-			@investment.project.calculate_raised
+			redirect_to "/pledge/#{@investment.id}"
 		else
 			flash[:failure] = "Error in backing project."
+			render 'edit'
 		end
-
-		redirect_to root_url
 	end
 
 	def edit
