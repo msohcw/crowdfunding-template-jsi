@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # get 'projects/index'
 
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
+  mount ResqueWeb::Engine => "/resque_web"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

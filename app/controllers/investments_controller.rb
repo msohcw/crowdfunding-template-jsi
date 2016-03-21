@@ -1,20 +1,12 @@
 class InvestmentsController < ApplicationController
-	before_action -> { project_exists?(params[:project_id]) }, only: [:new, :create]
+	before_action -> { project_exists?(params[:project_id]) }, only: [:new]	# passed in via URL parameters
+	before_action -> { project_exists?(investment_params[:project_id]) }, only: [:create] # passed in via form parameters
 	before_action :has_invested?,					only: [:new, :create]
 	before_action :is_investment_owner?, 	only: [:edit, :update, :confirm]
 	before_action :project_expired?
 
 	def new
-		@project = params[:project_id]
-		@invested = Investment.find_by(user_id: current_user.id, project_id: @project)
 		@investment = Investment.new
-
-		if @invested.present?
-			@investment = @invested.amount
-			@invested = true
-		else
-			@invested = false
-		end
 	end
 
 	def create

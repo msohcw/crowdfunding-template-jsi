@@ -49,6 +49,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    commonjs (0.2.7)
     concurrent-ruby (1.0.1)
     debug_inspector (0.0.2)
     devise (3.5.6)
@@ -82,6 +83,13 @@ GEM
       turbolinks
     json (1.8.3)
     jwt (1.5.1)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.7.1)
+      actionpack (>= 4.0)
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -164,6 +172,15 @@ GEM
       redis (~> 3.0)
       resque (~> 1.25)
       rufus-scheduler (~> 3.0)
+    resque-scheduler-web (0.0.4)
+      resque-scheduler (~> 4.0)
+      resque-web (~> 0)
+    resque-web (0.0.7)
+      coffee-rails
+      jquery-rails
+      resque
+      sass-rails
+      twitter-bootstrap-rails
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -198,6 +215,11 @@ GEM
     tilt (2.0.2)
     turbolinks (2.5.3)
       coffee-rails
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -235,6 +257,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   resque
   resque-scheduler
+  resque-scheduler-web
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
