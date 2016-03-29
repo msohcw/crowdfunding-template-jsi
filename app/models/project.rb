@@ -9,11 +9,7 @@ class Project < ActiveRecord::Base
   end
 
   def calculate_raised
-    logger.debug("---investments---")
-    logger.debug(self.investments.where(confirmed: true))
-    logger.debug("---amount---")
-    logger.debug(self.investments.where(confirmed: true).sum(:amount))
-    self.update_attribute(:raised, self.investments.where(:confirmed => true).sum(:amount))
+    self.update_attribute(:raised, self.investments.sum(:confirmed_amount))
   	return self.raised
   end
 

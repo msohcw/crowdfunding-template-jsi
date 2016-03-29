@@ -1,0 +1,4 @@
+<h2>Cancel Backing</h2>
+<p>You have backed <%= @project.name %> for <%= @investment.confirmed_amount %>.</p>
+<p>Are you sure you want to cancel?</p>
+<%= link_to "Yes, I am sure.", @investment, method: :delete %>

@@ -30,6 +30,8 @@ class StripeController < ApplicationController
 	def pledge
 		@investment = current_user.investments.find_by(id: params[:id]) 
 		if @investment.present?
+			logger.debug("investment")
+			logger.debug(@investment.intended_amount)
 			@project = Project.find(@investment.project_id)
 			if current_user.stripe_customer_ref.present?
 				customer = Stripe::Customer.retrieve(current_user.stripe_customer_ref)

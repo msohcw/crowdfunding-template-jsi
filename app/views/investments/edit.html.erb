@@ -1,8 +1,8 @@
 <h2>Back <%= Project.find(@project).name %></h2>
 <hr />
-<p>You have already backed this project for <%= @investment.amount %>.</p>
+<p>You have already backed this project for <%= @investment.confirmed_amount %>.</p>
 <%= form_for(@investment) do |f| %>
-	<%= f.label :amount, placeholder: @investment.amount %>
-	<%= f.number_field :amount %>
+	<%= f.label :intended_amount, "Amount" %>
+	<%= f.number_field :intended_amount, placeholder: @investment.confirmed_amount %>
 	<%= f.submit "Change Backing" %>
 <% end %>

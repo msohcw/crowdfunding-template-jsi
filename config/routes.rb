@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   root 'projects#index'
 
   resources :projects,      only: [:new, :create]
-  resources :investments,   only: [:new, :create, :edit, :update]
+  resources :investments,   only: [:new, :create, :edit, :update, :destroy]
+
   post  'investments/:id/confirm'   => 'investments#confirm' 
+  post  'investments/:id/cancel'   => 'investments#cancel' 
 
   post  'stripe/add_payment_method' => 'stripe#add_payment_method'
   get   'pledge/:id'                => 'stripe#pledge'

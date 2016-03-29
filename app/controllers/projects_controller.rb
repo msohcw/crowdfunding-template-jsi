@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   
   def create
     # @project = current_user.projects.build(project_params.merge(:expires => 20.seconds.from_now))
-  	@project = current_user.projects.build(project_params.merge(:expires => 1.minute.from_now))
+  	@project = current_user.projects.build(project_params.merge(:expires => 10.minutes.from_now))
   	if @project.save
   		flash[:success] = "Project created."
       # Resque.enqueue_in(5.minutes, ChargeBackersJob, project_id: @project.id)

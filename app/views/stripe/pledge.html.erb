@@ -1,4 +1,4 @@
 <h2>Back <%= @project.name %></h2>
 <hr />
-<h5>You are pledging <%= @investment.amount %> to <%= @project.name %>.</h5>
+<h5>You are pledging <%= @investment.intended_amount %> to <%= @project.name %>.</h5>
 <%= render 'stripe/payment' %>
