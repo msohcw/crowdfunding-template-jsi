@@ -29,23 +29,25 @@ class StripeController < ApplicationController
 
 	def pledge
 		@investment = current_user.investments.find_by(id: params[:id]) 
-		unless @investment.nil?
-			customer = Stripe::Customer.retrieve(current_user.stripe_customer_ref)
-			sources = customer.sources
-
-			@filtered_cards = []
+		if @investment.present?
 			@project = Project.find(@investment.project_id)
+			if current_user.stripe_customer_ref.present?
+				customer = Stripe::Customer.retrieve(current_user.stripe_customer_ref)
+				sources = customer.sources
 
-			sources.each do |source|
-				if source[:cvc_check] == 'pass'
-					card = {
-						:fingerprint => source[:fingerprint],
-						:brand => source[:brand],
-						:last4 => source[:last4],
-						:exp_month => source[:exp_month],
-						:exp_year => source[:exp_year]
-					}
-					@filtered_cards.push(card)
+				@filtered_cards = []
+
+				sources.each do |source|
+					if source[:cvc_check] == 'pass'
+						card = {
+							:fingerprint => source[:fingerprint],
+							:brand => source[:brand],
+							:last4 => source[:last4],
+							:exp_month => source[:exp_month],
+							:exp_year => source[:exp_year]
+						}
+						@filtered_cards.push(card)
+					end
 				end
 			end
 		else # investment does not belong to current user

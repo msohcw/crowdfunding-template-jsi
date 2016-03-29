@@ -26,6 +26,7 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  # config.assets.precompile += %w( resque_web/lifebuoy.png )
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -46,14 +47,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    :authentication => :plain,
+    :authentication => :login,
     :address        => "smtp.mailgun.org",
     :port           => 587,
     :domain         => "mg.matthewsoh.com",
     :user_name      => "postmaster@mg.matthewsoh.com",
     :password       => Rails.application.secrets.mailgun_password,
     :enable_starttls_auto => true,
-    :ssl            => true
   }
 
 
