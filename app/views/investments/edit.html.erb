@@ -6,3 +6,4 @@
 	<%= f.number_field :intended_amount, placeholder: @investment.confirmed_amount %>
 	<%= f.submit "Change Backing" %>
 <% end %>
+<%= link_to "Cancel Backing", "/investments/#{@investment.id}/cancel" %>

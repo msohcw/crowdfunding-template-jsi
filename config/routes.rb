@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :investments,   only: [:new, :create, :edit, :update, :destroy]
 
   post  'investments/:id/confirm'   => 'investments#confirm' 
-  post  'investments/:id/cancel'   => 'investments#cancel' 
+  get  'investments/:id/cancel'   => 'investments#cancel' 
 
   post  'stripe/add_payment_method' => 'stripe#add_payment_method'
   get   'pledge/:id'                => 'stripe#pledge'
