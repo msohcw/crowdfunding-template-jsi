@@ -1,3 +1,5 @@
+include ActionView::Helpers::DateHelper
+
 class Project < ActiveRecord::Base
   belongs_to :user
   has_many :investments
@@ -15,5 +17,11 @@ class Project < ActiveRecord::Base
 
   def expired?
     return Time.now > self.expires
+  end
+
+  def readable_time_left
+    approximate = distance_of_time_in_words(Time.now, self.expires, include_seconds:true)
+    approximate = approximate.gsub('less than a ', '1').gsub('half a minute ', '30 seconds').gsub(/((less than)|(about)) /, '')
+    return approximate
   end
 end

@@ -1,10 +1,14 @@
-<h6>Hello <%= current_user.name %>, welcome back!</h6>
-<hr />
-<h2>Projects</h2>
-<%= link_to 'Create Project', new_project_path, class: "button button-primary" %>
+<div class = "row">
+	<div class="nine columns">
+		<h2>Projects</h2>
+	</div>
+	<div class="three columns">
+		<%= link_to 'Create Project', new_project_path, class: "button button-primary" %>
+	</div>
+</div>
 <hr />
 <div>
-	<%= render @projects %>
+	<%= render partial: "project", collection: @active_projects, as: :project %>
 </div>
 <p>
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> | 

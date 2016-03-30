@@ -1,0 +1,45 @@
+<h2><%= @project.name %></h2>
+<p>Creator: <%= @project.user.name %></p>
+<div class = "row">
+	<div class = "eight columns">
+		 <%= image_tag "https://placehold.it/600x370" %>
+	</div>
+	<div class = "four columns">
+		<table class="u-full-width">
+	        <tr>
+		        <th><%= @project.backers.count %></th>
+		        <td>backers</td>
+	        </tr>
+	        <tr>
+		        <th><%= @project.raised %></th>
+		        <td>raised</td>
+	        </tr>
+		 	<% unless @project.expired?%>
+		        <tr>
+			        <th><%= @project.readable_time_left.capitalize %></th>
+			        <td>to go</td>
+		        </tr>
+		    <% end %>
+	    </table>
+		<% if @project.expired?%>
+		 <h5>Project Closed</h5>
+		 <p>
+		 	It was 
+		 	<% if @project.raised >= @project.target %>
+		 		successfully
+		 	<% else %>
+		 		unsuccessfully
+		 	<% end %>
+		 	funded.
+		 </p>
+		 <% else %>
+		 	<% if current_user.investments.find_by(project_id: @project.id).present? %>
+			    <%= link_to "Change Backing", edit_investment_path(current_user.investments.find_by(project_id: @project.id)), class: "button button-primary" %>
+			<% else %>
+  				<%= link_to "Back Project", new_investment_path(project_id: @project.id), class: "button button-primary" %>
+			<% end %>
+		 <% end %>
+	</div>
+</div>
+<hr />
+<p><%= simple_format @project.description %></p>

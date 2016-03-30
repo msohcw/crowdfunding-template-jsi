@@ -1,6 +1,11 @@
 class ProjectsController < ApplicationController
   def index
-  	@projects = Project.all
+    # @projects = Project.all
+  	@active_projects = Project.where('expires > :now', :now => Time.now)
+  end
+
+  def show
+    @project = Project.find(params[:id])
   end
 
   def new
@@ -9,7 +14,9 @@ class ProjectsController < ApplicationController
   
   def create
     # @project = current_user.projects.build(project_params.merge(:expires => 20.seconds.from_now))
-  	@project = current_user.projects.build(project_params.merge(:expires => 10.minutes.from_now))
+    # @project = current_user.projects.build(project_params.merge(:expires => 10.minutes.from_now))
+    # @project = current_user.projects.build(project_params.merge(:expires => 30.minutes.from_now))
+  	@project = current_user.projects.build(project_params.merge(:expires => 1.hour.from_now))
   	if @project.save
   		flash[:success] = "Project created."
       # Resque.enqueue_in(5.minutes, ChargeBackersJob, project_id: @project.id)

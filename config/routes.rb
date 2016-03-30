@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'projects#index'
 
-  resources :projects,      only: [:new, :create]
+  resources :projects,      only: [:new, :create, :show]
   resources :investments,   only: [:new, :create, :edit, :update, :destroy]
 
   post  'investments/:id/confirm'   => 'investments#confirm' 
