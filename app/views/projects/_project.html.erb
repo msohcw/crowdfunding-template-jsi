@@ -14,7 +14,7 @@
     <p><%= truncate(project.description, length: 140, separator: ' ') %></p>
     <table class="u-full-width">
       <thead>
-        <th><%= truncate("%.2f" % (project.raised.to_f/project.target.to_f * 100), length:3, omission:'') %>%</th>
+        <th><%= truncate("%.2f" % (project.raised.to_f/project.target.to_f * 100), length:4, omission:'') %>%</th>
         <th><%= project.raised %></th>
         <th><%= project.readable_time_left.capitalize %></th>
       </thead>
