@@ -26,7 +26,7 @@ class Investment < ActiveRecord::Base
   	end
   	
   	Stripe::Charge.create(
-  		:amount => self.amount * 100, # x100 is for temp conversion to cents 
+  		:amount => self.confirmed_amount * 100, # TODO x100 is for temp conversion to cents 
   		:currency => 'sgd',
   		:description => "Backing for #{project.name} (#{self.project_id})",
   		:customer => customer.id,
