@@ -14,7 +14,11 @@ This project was built to run on
 * CSS styles are all derived from skeleton.css. Keys are all pulled from environment.
 
 Setup Postgres with user and password, as in config/database.yml
+
 Setup Redis
+
 Run resque, resque-scheduler
+
 rake db
+
 rails s
