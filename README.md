@@ -2,7 +2,7 @@
 
 This is a Ruby on Rails template for a crowdfunding website.
 
-*NOTE: This repository is marked jsi or just-ship-it which means i) I am not actively supporting it, ii) It's at least partially unfinished in some way, iii) I do not see myself continuining it in the short term iv) bugs abound. Tread with caution.
+*NOTE: This repository is marked jsi or just-ship-it which means i) I am not actively supporting it, ii) It's at least partially unfinished in some way, iii) I do not see myself continuining it in the short term iv) bugs abound. Tread with caution.*
 
 This project was built to run on
 * Amazon Elastic Beanstalk with EC2 autoscaling groups,
