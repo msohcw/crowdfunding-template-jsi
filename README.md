@@ -10,15 +10,15 @@ This project was built to run on
 * Amazon ElastiCache (Redis) to back resque (Ruby library for queues, works with ActiveJob) and resque-scheduler, resque-web
 * Mailgun for emails (processed on resque)
 * Stripe for processing payments
-* Authy for 2-factor authentication
+* Authy for 2-factor authentication (Unfinished)
+* LinkedIn login, with the option to add more accounts via omniauth
 * CSS styles are all derived from skeleton.css. Keys are all pulled from environment.
 
-Setup Postgres with user and password, as in config/database.yml
-
-Setup Redis
-
-Run resque, resque-scheduler
-
-rake db
-
-rails s
+Brief setup instructions
+* Setup Postgres with user and password, as in config/database.yml
+* Setup Redis
+* Setup secrets.yml with the necessary keys
+* `rake db:reset db:migrate`
+* Run resque `rake environment resque:work QUEUE=*`
+* resque-scheduler `rake environment resque:scheduler`
+* rails s
